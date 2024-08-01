@@ -11,3 +11,7 @@ myenv\Scripts\Activate.ps1
 
 ### Intall dependencies:
 pip install -r requirements.txt
+
+### Local initialization:
+python manage.py migrate
+python manage.py runserver
