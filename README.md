@@ -15,3 +15,9 @@ pip install -r requirements.txt
 ### Local initialization:
 python manage.py migrate
 python manage.py runserver
+
+### About testing:
+Unit testing applied on model and serializer, integration test applied on Views. 
+
+
+python manage.py test temp_repo.tests

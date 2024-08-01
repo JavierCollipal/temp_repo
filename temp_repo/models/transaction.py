@@ -1,4 +1,3 @@
-# temp_repo/models/transaction.py
 from mongoengine import Document, UUIDField, StringField, DecimalField, DateField
 import uuid
 
