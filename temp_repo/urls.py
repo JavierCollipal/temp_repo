@@ -19,4 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('api/', include('temp_repo.routes.transaction')),
+    path('api/', include('temp_repo.routes.category')),
+    path('api/', include('temp_repo.routes.commerce')),
+    path('api/', include('temp_repo.routes.keyword')),
 ]
