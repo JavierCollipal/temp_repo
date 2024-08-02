@@ -13,11 +13,13 @@ python manage.py load_everything
 
 ### Local initialization:
 python manage.py runserver
+or
+python manage.py test temp_repo.tests
 
 ### About testing:
 integration test applied on every CRUD. 
-# 100 enrichment with same description from provided xlsx data
-python manage.py test temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_operation
+# test all the folders
+ python manage.py test temp_repo.tests
 
 # 1000 enrichment under 8 seconds; doesn't work
 python manage.py test temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_operation temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_performance_1000_transactions
