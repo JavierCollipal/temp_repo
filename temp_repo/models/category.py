@@ -11,9 +11,6 @@ class Category(Document):
 
     meta = {
         'collection': 'categories',
-        'indexes': [
-            {'fields': ['$name'], 'default_language': 'none'}
-        ]
     }
 
     def save(self, *args, **kwargs):

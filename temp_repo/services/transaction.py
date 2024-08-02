@@ -4,13 +4,11 @@ from uuid import UUID
 from mongoengine.errors import ValidationError, BulkWriteError
 from ..models.transaction import Transaction
 from ..models.keyword import Keyword
+from ..models.category import Category  # Assuming you have a Category model for category search
 import traceback
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-
-# Cached keyword mappings
-keyword_cache = {}
 
 def list_transactions():
     return Transaction.objects.all()
@@ -26,8 +24,8 @@ def get_enriched_data(transaction, merchant_id=None, category_id=None):
         'description': transaction.description,
         'amount': transaction.amount,
         'date': transaction.date,
-        'category': category_id,  # Make sure category_id is correctly fetched
-        'commerce': merchant_id   # Make sure merchant_id is correctly fetched
+        'category': category_id,
+        'commerce': merchant_id
     }
 
 def log_description(transaction):
@@ -35,29 +33,23 @@ def log_description(transaction):
     logger.info(f"Description for transaction ID: {transaction.external_id}: {description}")
     return description
 
-def load_keyword_cache():
-    global keyword_cache
-    keywords = Keyword.objects.all()
-    for keyword in keywords:
-        keyword_cache[keyword.keyword.lower()] = {
-            'merchant_id': keyword.merchant_id.id,  # Use ID to avoid object reference issues
-            'category_id': keyword.merchant_id.category.id if keyword.merchant_id and keyword.merchant_id.category else None
-        }
-    logger.info(f"Loaded {len(keyword_cache)} keywords into cache.")
-
 def find_keyword(description):
-    for keyword, data in keyword_cache.items():
-        if keyword in description:
-            return data
+    try:
+        matched_keyword = Keyword.objects.search_text(description).first()
+        if matched_keyword:
+            return matched_keyword
+    except Exception as e:
+        logger.error(f"Error during keyword search: {str(e)}")
     return None
+
 
 def handle_enrichment_error(transaction_id, error):
     logger.error(f"Error during enrichment for transaction ID: {transaction_id}: {str(error)}")
     logger.error("Traceback:", exc_info=True)  # This logs the stack trace
 
 def calculate_metrics(enriched_transactions, total_transactions_received, total_keyword_matches):
-    successful_categorizations = sum(1 for tx in enriched_transactions if tx.get('category') is not None)
-    successful_identifications = sum(1 for tx in enriched_transactions if tx.get('commerce') is not None)
+    successful_categorizations = sum(1 for tx in enriched_transactions if tx.category is not None)
+    successful_identifications = sum(1 for tx in enriched_transactions if tx.commerce is not None)
     match_keyword_rate = (total_keyword_matches / total_transactions_received) * 100 if total_transactions_received > 0 else 0
 
     categorization_rate = (successful_categorizations / total_transactions_received) * 100 if total_transactions_received > 0 else 0
@@ -79,55 +71,58 @@ def enrich_transaction(transaction):
     logger.info(f"Starting enrichment for transaction ID: {transaction.external_id}")
     description = log_description(transaction)
 
-    keyword_data = find_keyword(description)
-    commerce = keyword_data['merchant_id'] if keyword_data else None
-    category = keyword_data['category_id'] if keyword_data else determine_category_from_description(description)
+    matched_keyword = find_keyword(description)
+    commerce = None
+    category = None
 
-    transaction.category = category
-    transaction.commerce = commerce
-    transaction.updated_at = datetime.utcnow()
+    if matched_keyword:
+        commerce = matched_keyword.merchant_id
+        category = matched_keyword.merchant_id.category if matched_keyword.merchant_id else None
 
-    return transaction
+    # Prepare the enriched data dictionary without saving the transaction
+    enriched_data = get_enriched_data(transaction, merchant_id=commerce, category_id=category)
 
-def determine_category_from_description(description):
-    if "tienda de abarrotes" in description or "supermercado" in description:
-        return "your-predefined-uuid-for-supermarket-category"  # Replace with actual UUID
-    return None
+    logger.info(f"Enrichment completed for transaction ID: {transaction.external_id}")
+    return enriched_data
 
 def enrich_transactions(transactions):
-    load_keyword_cache()
     total_transactions_received = len(transactions)
     total_keyword_matches = 0
-    enriched_transactions_data = []
-    enriched_transaction_objects = []
+    enriched_transaction_docs = []
 
     for transaction in transactions:
         try:
-            description = log_description(transaction)
-            keyword_data = find_keyword(description)
+            # Enrich the transaction and get the data as a dictionary
+            enriched_data = enrich_transaction(transaction)
 
-            if keyword_data:
+            # Prepare the Transaction object for bulk insertion
+            transaction_doc = Transaction(
+                external_id=UUID(enriched_data['external_id']),
+                description=enriched_data['description'],
+                amount=enriched_data['amount'],
+                date=enriched_data['date'],
+                category=enriched_data['category'],
+                commerce=enriched_data['commerce'],
+                updated_at=datetime.utcnow()
+            )
+
+            enriched_transaction_docs.append(transaction_doc)
+
+            # Count successful keyword matches
+            if enriched_data['category'] or enriched_data['commerce']:
                 total_keyword_matches += 1
-            
-            enriched_transaction = enrich_transaction(transaction)
-            enriched_transactions_data.append(get_enriched_data(
-                enriched_transaction,
-                merchant_id=enriched_transaction.commerce,
-                category_id=enriched_transaction.category
-            ))
 
-            enriched_transaction_objects.append(enriched_transaction)
-            
         except Exception as e:
             handle_enrichment_error(transaction.external_id, e)
 
-    # Bulk insert enriched transaction objects
-    try:
-        if enriched_transaction_objects:
-            Transaction.objects.insert(enriched_transaction_objects, load_bulk=False)
-            logger.info(f"Bulk insert completed for {len(enriched_transaction_objects)} transactions.")
-    except Exception as e:
-        logger.error(f"Error during bulk insert: {e}")
+    # Bulk insert enriched transactions
+    if enriched_transaction_docs:
+        try:
+            Transaction.objects.insert(enriched_transaction_docs, load_bulk=False)
+            logger.info("Bulk insert of enriched transactions completed successfully.")
+        except BulkWriteError as bwe:
+            logger.error(f"Bulk write error: {bwe.details}")
 
-    metrics = calculate_metrics(enriched_transactions_data, total_transactions_received, total_keyword_matches)
+    # Calculate and return metrics
+    metrics = calculate_metrics(enriched_transaction_docs, total_transactions_received, total_keyword_matches)
     return metrics
