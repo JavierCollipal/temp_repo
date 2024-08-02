@@ -15,8 +15,13 @@ python manage.py load_everything
 python manage.py runserver
 
 ### About testing:
-Unit testing applied on model and serializer, integration test applied on Views. 
-# 100 enrichment with same description from provided data
+integration test applied on every CRUD. 
+# 100 enrichment with same description from provided xlsx data
 python manage.py test temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_operation
-# 1000 enrichment under 8 seconds 
+
+# 1000 enrichment under 8 seconds; doesn't work
 python manage.py test temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_operation temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_performance_1000_transactions
+
+
+###Enrichment process:
+An atlas text search is being made on every keyword search with the transaction  description.

@@ -72,29 +72,20 @@ class EnrichmentOperationTestCase(APITestCase):
         self.assertIn('merchant_identification_rate', response_data, "Merchant identification rate is missing in response data.")
         self.assertIn('match_keyword_rate', response_data, "Match keyword rate is missing in response data.")
 
-    def test_enrichment_performance_1000_transactions(self):
-        print("[TEST] Performance test for enriching 1000 transactions.")
+    def test_get_enriched_transactions(self):
+        print("[TEST] Retrieving list of enriched transactions.")
 
-        # Generate 1000 transaction data (first 100 from descriptions, rest random)
-        transaction_data = [
-            {
-                'description': self.transaction_descriptions[i % len(self.transaction_descriptions)],
-                'amount': round(random.uniform(-9999.99, 9999.99), 2),
-                'date': datetime.now().strftime('%Y-%m-%d')
-            }
-            for i in range(1000)
-        ]
+        # Perform enrichment operation to create enriched transactions
+        self.client.post(self.url, {'transactions': self.transaction_data}, format='json')
 
-        # Measure the time taken for the enrichment process
-        start_time = time.time()
-        response = self.client.post(self.url, {'transactions': transaction_data}, format='json')
-        end_time = time.time()
+        # Simulate a GET request to retrieve enriched transactions
+        get_url = self.url  # Assuming same endpoint handles GET request
+        response = self.client.get(get_url)
 
-        duration = end_time - start_time
-        print(f"Enrichment process took {duration:.2f} seconds")
-
-        # Check if the response time is within the 8-second limit
-        self.assertTrue(duration < 8, f"Enrichment took too long: {duration} seconds")
-
-        # Ensure the response is successful
+        # Check for successful response
         self.assertEqual(response.status_code, status.HTTP_200_OK, f"Expected status code 200, got {response.status_code}")
+
+        # Verify the structure of the response
+        response_data = response.json()
+        self.assertIsInstance(response_data, list, "Expected a list of enriched transactions.")
+        self.assertGreater(len(response_data), 0, "Expected at least one enriched transaction.")

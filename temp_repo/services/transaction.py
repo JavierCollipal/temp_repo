@@ -1,14 +1,14 @@
 import logging
 from datetime import datetime
 from uuid import UUID
-from mongoengine.errors import ValidationError, BulkWriteError
+from mongoengine.errors import  BulkWriteError
+from django.core.cache import cache
 from ..models.transaction import Transaction
 from ..models.keyword import Keyword
-from ..models.category import Category  # Assuming you have a Category model for category search
-import traceback
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+CACHE_TIMEOUT = 3600  # Cache timeout in seconds (e.g., 1 hour)
 
 def list_transactions():
     return Transaction.objects.all()
@@ -35,14 +35,27 @@ def log_description(transaction):
 
 def find_keyword(description):
     try:
-        matched_keyword = Keyword.objects.search_text(description).first()
-        if matched_keyword:
-            return matched_keyword
+        # Normalize the description for consistent cache keys
+        normalized_description = description.strip().lower().replace(' ', '_').replace(':', '_')
+        cache_key = f'keyword_{normalized_description}'
+
+        # Check if the keyword is in the cache
+        matched_keyword = cache.get(cache_key)
+        if matched_keyword is None:
+            # If not in cache, perform the database query
+            matched_keyword = Keyword.objects.search_text(description).first()
+            if matched_keyword:
+                # Store the result in the cache
+                cache.set(cache_key, matched_keyword, timeout=CACHE_TIMEOUT)
+            else:
+                # Store None in the cache to prevent repeated queries
+                cache.set(cache_key, None, timeout=CACHE_TIMEOUT)
+
+        return matched_keyword
     except Exception as e:
         logger.error(f"Error during keyword search: {str(e)}")
-    return None
-
-
+        return None
+    
 def handle_enrichment_error(transaction_id, error):
     logger.error(f"Error during enrichment for transaction ID: {transaction_id}: {str(error)}")
     logger.error("Traceback:", exc_info=True)  # This logs the stack trace
@@ -126,3 +139,12 @@ def enrich_transactions(transactions):
     # Calculate and return metrics
     metrics = calculate_metrics(enriched_transaction_docs, total_transactions_received, total_keyword_matches)
     return metrics
+
+def get_enriched_transactions():
+    try:
+        # Fetch all transactions that have been enriched
+        enriched_transactions = Transaction.objects.filter(category__ne=None, commerce__ne=None)
+        return enriched_transactions
+    except Exception as e:
+        logger.error(f"Error fetching enriched transactions: {str(e)}")
+        return []

@@ -16,8 +16,9 @@ class KeywordListCreateView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        # Ensure create_keyword returns a Keyword instance
         keyword = create_keyword(serializer.validated_data)
-        return Response(KeywordSerializer(keyword).data, status=status.HTTP_201_CREATED)
+        return Response(self.get_serializer(keyword).data, status=status.HTTP_201_CREATED)
 
 class KeywordDetailView(generics.GenericAPIView):
     serializer_class = KeywordSerializer
@@ -26,7 +27,7 @@ class KeywordDetailView(generics.GenericAPIView):
         keyword = get_keyword_by_id(keyword_id)
         if not keyword:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        return Response(KeywordSerializer(keyword).data)
+        return Response(self.get_serializer(keyword).data)
 
     def put(self, request, keyword_id, *args, **kwargs):
         keyword = get_keyword_by_id(keyword_id)
@@ -34,10 +35,13 @@ class KeywordDetailView(generics.GenericAPIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        # Ensure update_keyword returns the updated Keyword instance
         updated_keyword = update_keyword(keyword_id, serializer.validated_data)
-        return Response(KeywordSerializer(updated_keyword).data)
+        return Response(self.get_serializer(updated_keyword).data)
 
     def delete(self, request, keyword_id, *args, **kwargs):
+        # Ensure delete_keyword returns the deleted Keyword instance or None
         keyword = delete_keyword(keyword_id)
         if not keyword:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(status=status.HTTP_204_NO_CONTENT)

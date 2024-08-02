@@ -2,7 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from temp_repo.models.category import Category
-import uuid
+from bson import ObjectId
 
 class CategoryTestCase(APITestCase):
 
@@ -28,8 +28,8 @@ class CategoryTestCase(APITestCase):
 
     def test_get_all_categories(self):
         print("\n[TEST] Retrieving all categories.")
-        Category(id=uuid.uuid4(), name="Groceries", type="expense").save()
-        Category(id=uuid.uuid4(), name="Salary", type="income").save()
+        Category(id=ObjectId(), name="Groceries", type="expense").save()
+        Category(id=ObjectId(), name="Salary", type="income").save()
         print("2 categories created.")
         response = self.client.get(self.url_list_create)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -39,9 +39,10 @@ class CategoryTestCase(APITestCase):
 
     def test_get_category(self):
         print("\n[TEST] Retrieving a specific category by ID.")
-        category = Category(id=uuid.uuid4(), name="Entertainment", type="expense").save()
+        category = Category(id=ObjectId(), name="Entertainment", type="expense")
+        category.save()
         print(f"Category created with ID: {category.id}")
-        response = self.client.get(self.url_detail(category.id))
+        response = self.client.get(self.url_detail(str(category.id)))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         print(f"Response status: {response.status_code}")
         self.assertEqual(response.data['name'], "Entertainment")
@@ -49,13 +50,14 @@ class CategoryTestCase(APITestCase):
 
     def test_update_category(self):
         print("\n[TEST] Updating a specific category entry.")
-        category = Category(id=uuid.uuid4(), name="Bills", type="expense").save()
+        category = Category(id=ObjectId(), name="Bills", type="expense")
+        category.save()
         data = {
             'name': 'Utilities',
             'type': 'expense'
         }
         print(f"Updating category with ID: {category.id} with data: {data}")
-        response = self.client.put(self.url_detail(category.id), data, format='json')
+        response = self.client.put(self.url_detail(str(category.id)), data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         updated_category = Category.objects.get(id=category.id)
         self.assertEqual(updated_category.name, 'Utilities')
@@ -63,9 +65,10 @@ class CategoryTestCase(APITestCase):
 
     def test_delete_category(self):
         print("\n[TEST] Deleting a specific category entry.")
-        category = Category(id=uuid.uuid4(), name="Shopping", type="expense").save()
+        category = Category(id=ObjectId(), name="Shopping", type="expense")
+        category.save()
         print(f"Deleting category with ID: {category.id}")
-        response = self.client.delete(self.url_detail(category.id))
+        response = self.client.delete(self.url_detail(str(category.id)))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         print(f"Response status: {response.status_code}")
         self.assertEqual(Category.objects.count(), 0)
