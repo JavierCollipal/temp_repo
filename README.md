@@ -26,11 +26,11 @@ python manage.py load_keywords
 python manage.py load_transactions
 
 ### Local initialization:
-python manage.py migrate
 python manage.py runserver
 
 ### About testing:
 Unit testing applied on model and serializer, integration test applied on Views. 
-
-
-python manage.py test temp_repo.tests
+# 100 enrichment with same description from provided data
+python manage.py test temp_repo.tests.transactions.test_enrichhment_operation.EnrichmentOperationTestCase.test_enrichment_operation
+# 1000 enrichment under 8 seconds 
+python manage.py test temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_operation temp_repo.tests.transactions.test_enrichment_operation.EnrichmentOperationTestCase.test_enrichment_performance_1000_transactions

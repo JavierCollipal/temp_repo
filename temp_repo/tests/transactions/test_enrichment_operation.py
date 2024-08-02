@@ -4,12 +4,12 @@ from rest_framework.test import APITestCase
 from temp_repo.models.transaction import Transaction
 from datetime import datetime
 import random
+import time
 
 class EnrichmentOperationTestCase(APITestCase):
     def setUp(self):
         print("\n[Setup] Preparing data for enrichment operation tests...")
         self.url = reverse('enrichment-operation')
-
 
         # List of descriptions to be used for the transactions
         self.transaction_descriptions = [
@@ -46,7 +46,6 @@ class EnrichmentOperationTestCase(APITestCase):
             "UNIMARC AV ESPANA"
         ]
 
-
         # Generate transaction data without saving them in the database
         self.transaction_data = [
             {
@@ -55,7 +54,7 @@ class EnrichmentOperationTestCase(APITestCase):
                 'date': datetime.now().strftime('%Y-%m-%d')  # Format date as YYYY-MM-DD
             }
             for i in range(100)
-        ]    
+        ]
 
     def test_enrichment_operation(self):
         print("[TEST] Performing enrichment operation on transactions.")
@@ -72,3 +71,30 @@ class EnrichmentOperationTestCase(APITestCase):
         self.assertIn('categorization_rate', response_data, "Categorization rate is missing in response data.")
         self.assertIn('merchant_identification_rate', response_data, "Merchant identification rate is missing in response data.")
         self.assertIn('match_keyword_rate', response_data, "Match keyword rate is missing in response data.")
+
+    def test_enrichment_performance_1000_transactions(self):
+        print("[TEST] Performance test for enriching 1000 transactions.")
+
+        # Generate 1000 transaction data (first 100 from descriptions, rest random)
+        transaction_data = [
+            {
+                'description': self.transaction_descriptions[i % len(self.transaction_descriptions)],
+                'amount': round(random.uniform(-9999.99, 9999.99), 2),
+                'date': datetime.now().strftime('%Y-%m-%d')
+            }
+            for i in range(1000)
+        ]
+
+        # Measure the time taken for the enrichment process
+        start_time = time.time()
+        response = self.client.post(self.url, {'transactions': transaction_data}, format='json')
+        end_time = time.time()
+
+        duration = end_time - start_time
+        print(f"Enrichment process took {duration:.2f} seconds")
+
+        # Check if the response time is within the 8-second limit
+        self.assertTrue(duration < 8, f"Enrichment took too long: {duration} seconds")
+
+        # Ensure the response is successful
+        self.assertEqual(response.status_code, status.HTTP_200_OK, f"Expected status code 200, got {response.status_code}")
