@@ -12,6 +12,19 @@ myenv\Scripts\Activate.ps1
 ### Intall dependencies:
 pip install -r requirements.txt
 
+### Data migration from xlsx:
+1-Load Categories
+python manage.py load_categories
+
+2-Load Commerces
+python manage.py load_commerces
+
+3-Load Keywords
+python manage.py load_keywords
+
+4-Load Transactions
+python manage.py load_transactions
+
 ### Local initialization:
 python manage.py migrate
 python manage.py runserver

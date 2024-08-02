@@ -2,67 +2,73 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from temp_repo.models.transaction import Transaction
-from temp_repo.models.category import Category
-from temp_repo.models.commerce import Commerce
-from temp_repo.models.keyword import Keyword
-from temp_repo.serializers.enrichment import EnrichedTransactionSerializer
+from datetime import datetime
+import random
 
 class EnrichmentOperationTestCase(APITestCase):
-
     def setUp(self):
-        print("\n[Setup] Creating entities for enrichment operation tests...")
+        print("\n[Setup] Preparing data for enrichment operation tests...")
+        self.url = reverse('enrichment-operation')
 
-        # Create a category
-        self.category = Category(
-            name="Restaurantes",
-            type="expense"
-        ).save()
-        print(f"Category created with ID: {self.category.id}, Name: {self.category.name}")
 
-        # Create a commerce with reference to the category
-        self.commerce = Commerce(
-            merchant_name="Uber Eats",
-            merchant_logo="http://example.com/logo.png",
-            category=self.category
-        ).save()
-        print(f"Commerce created with ID: {self.commerce.id}, Merchant Name: {self.commerce.merchant_name}, Category ID: {self.category.id}")
+        # List of descriptions to be used for the transactions
+        self.transaction_descriptions = [
+            "PETROBRAS 11 ORTE/7 SU", "PETROBRAS 9 NTE/7 ORNTE", "PETROBRAS AEROPUERTO",
+            "PETROBRAS ALTO HOSPIC", "PEDIDOSYA 3D RESTAURANT", "PEDIDOSYA 3D SUPERMERC",
+            "PEDIDOSYA INDUMENT RIDERS", "PEDIDOSYA MARKETS 9262", "PEDIDOSYA PROPINA",
+            "McDonalds Las Condes", "FACEBK 85ENTJXAQ2", "FACEBK 85GSQFKH92",
+            "FACEBK 85R97HKYG2", "SumUp *DOMINOS PIZZA G", "PAYPAL *DOMINOS",
+            "DOMINO S PIZZA", "Domino s Pizza Frederi", "DOMINO S PIZZA LA 10",
+            "DOMINO SANTA ROSA", "DOMINO'S 2080", "DOMINO'S 2759", "DOMINO'S 3232",
+            "DOMINO'S 3684", "DOMINO'S 4342", "SALCOBRAND 433 JUMBO C",
+            "SALCOBRAND 433 JUMBO CALA", "CRUZVERDE CV 9059", "CRUZVERDE CV 9060",
+            "CRUZVERDE CV 9061", "CRUZVERDE CV9081", "CRUZVERDE CV9087",
+            "C. VERDE JUMBO RANCAGUA", "C. VERDE JUMBO V DEL M", "C. VERDE JUMBO V DEL MAR",
+            "merpago aguasandinas", "UNIRED CL AGUAS ANDINAS", "AGUAS ANDINAS",
+            "AGUAS ANDINAS ONEPAY", "MCB 02 AGUAS ANDINAS", "COMPRA NACIONAL EASY LA DEHESA",
+            "Compra Nacional EASY RANCAGUA", "EASY ALTO LAS CONDE", "EASY ALTO LAS CONDES",
+            "EASY ANTOFAGASTA", "EASY CALAMA", "EASY CERRILLOS", "EASY CHIGUAYANTE",
+            "EASY CHILLAN", "EASY CONCHA Y TORO", "EXPRESS - LIDER",
+            "EXPRESS - LIDER CONCE", "EXPRESS - LIDER CONCE TRE", "EXPRESS ALGARROBO",
+            "EXPRESS ANDINO", "EXPRESS ANDRNS MELLADO", "EXPRESS ANGELINO",
+            "EXPRESS ANTOFAG PEREZ", "EXPRESS BUIN SAN MARTIN", "EXPRESS BUIN SAN MARTIN",
+            "EXPRESS CIUD DE LOS VA", "EXPRESS CIUD DE LOS VALLE", "EXPRESS CIUDAD DE BARCELO",
+            "EXPRESS CIUDAD DEL ES", "MP *RECARGA BIP]", "MP *RECARGA BIP|",
+            "BC UBER CASH", "PAYPAL *UBER", "PAYPAL *UBER BR", "PAYPAL *UBER BV",
+            "PAYPAL *UBERPAYMENT", "PAYU *UBER TR", "PAYU-UBER 828987",
+            "PAYPAL *UBER EATS", "PAYPAL *UBERBV EATS", "PAYPAL *UBEREATS AU",
+            "UBER *EATS HELP.UBER.C", "UBER *EATS HELP.UBER.C", "UBER *EATS HELP.UBER.COM",
+            "UBER CANADA/UBEREATS", "UBER EATS", "UBER EATS", "UBER* EATS", "UBER* EATS",
+            "UNDER AMOUR MALL PLAZA VE", "UNDER ARMOUR", "UNDER ARMOUR CANCUN IC",
+            "Pago TDC ITAU", "Pago TDC ITAU", "Pago TDC ITAU", "Pago TDC ITAU",
+            "BOLT", "UNIMARC - COORONEL", "UNIMARC ANDALUE (CABRERO)",
+            "UNIMARC ANGOL I", "UNIMARC ANTOFAGASTA", "UNIMARC ARAUCO", "UNIMARC ATACAMA",
+            "UNIMARC AV ESPANA"
+        ]
 
-        # Create a keyword with reference to the commerce
-        self.keyword = Keyword(
-            keyword="uber eats",
-            merchant_id=self.commerce.id
-        ).save()
-        print(f"Keyword created with ID: {self.keyword.id}, Keyword: {self.keyword.keyword}, Merchant ID: {self.keyword.merchant_id}")
 
-        # Setup URLs
-        self.url_enrichment = reverse('enrichment-operation')
+        # Generate transaction data without saving them in the database
+        self.transaction_data = [
+            {
+                'description': self.transaction_descriptions[i % len(self.transaction_descriptions)],
+                'amount': round(random.uniform(-9999.99, 9999.99), 2),  # Ensure total digits <= 10
+                'date': datetime.now().strftime('%Y-%m-%d')  # Format date as YYYY-MM-DD
+            }
+            for i in range(100)
+        ]    
 
     def test_enrichment_operation(self):
-        print("\n[TEST] Performing enrichment operation on transactions.")
+        print("[TEST] Performing enrichment operation on transactions.")
 
-        # Create a transaction to be enriched
-        transaction = Transaction(
-            description="PYU *UberEats",
-            amount=-300.00,
-            date="2023-12-01"
-        ).save()
+        # Simulate a REST call with transaction-like objects
+        response = self.client.post(self.url, {'transactions': self.transaction_data}, format='json')
 
-        print(f"Transaction created with ID: {transaction.id}, Description: {transaction.description}")
+        # Check for successful response
+        self.assertEqual(response.status_code, status.HTTP_200_OK, f"Expected status code 200, got {response.status_code}")
 
-        # Data for enrichment request
-        enrichment_data = {
-            "transactions": [
-                {"description": transaction.description, "amount": transaction.amount, "date": transaction.date}
-            ]
-        }
-
-        # Perform the enrichment operation
-        response = self.client.post(self.url_enrichment, enrichment_data, format='json')
-        print(f"Enrichment operation response status: {response.status_code}")
-
-        # Assertions
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        enriched_transaction = response.data[0]
-        print("Verified that the transaction was enriched with the correct category and commerce details.")
-
+        response_data = response.json()
         
+        # Check for metrics in the response data
+        self.assertIn('categorization_rate', response_data, "Categorization rate is missing in response data.")
+        self.assertIn('merchant_identification_rate', response_data, "Merchant identification rate is missing in response data.")
+        self.assertIn('match_keyword_rate', response_data, "Match keyword rate is missing in response data.")

@@ -25,7 +25,7 @@ class TransactionCreateMany(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         create_transactions(serializer.validated_data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
 class EnrichmentOperationView(generics.GenericAPIView):
     """
     API endpoint for enriching transactions with additional information like commerce and category.
@@ -34,18 +34,32 @@ class EnrichmentOperationView(generics.GenericAPIView):
     
     def post(self, request, *args, **kwargs):
         transactions_data = request.data.get('transactions', [])
-        transactions = []
         
+        # Validate and collect transactions
+        transactions = self.validate_and_collect_transactions(transactions_data)
+        
+        # Perform enrichment
+        metrics = enrich_transactions(transactions)
+
+        return Response(metrics, status=status.HTTP_200_OK)
+
+    def validate_and_collect_transactions(self, transactions_data):
+        """
+        Validates the transactions data and collects valid transactions.
+        
+        Args:
+            transactions_data (list): List of transaction data dictionaries.
+        
+        Returns:
+            list: List of valid transaction objects.
+        """
+        transactions = []
         for data in transactions_data:
-            # Deserialize data to Transaction instances
             serializer = self.serializer_class(data=data)
             if serializer.is_valid():
                 transaction = serializer.save()
                 transactions.append(transaction)
-
-        # Enrich the transactions
-        enriched_data = enrich_transactions(transactions)
-
-        # Serialize the enriched transactions
-        enriched_serializer = EnrichedTransactionSerializer(enriched_data, many=True)
-        return Response(enriched_serializer.data, status=status.HTTP_200_OK)
+            else:
+                print("[ERROR] Invalid transaction data:", serializer.errors)
+        
+        return transactions
