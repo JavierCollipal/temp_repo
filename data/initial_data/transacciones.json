@@ -1,0 +1,602 @@
+[
+    {
+        "id": "d1c0bd75-1aee-4901-9ef9-2a7897518e16",
+        "description": "PETROBRAS 11 ORTE/7 SU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "53ae625b-59f7-4c86-9f49-fc0d49af9043",
+        "description": "PETROBRAS 9 NTE/7 ORNTE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "45c9ae1b-f73b-4725-9089-4441f3936738",
+        "description": "PETROBRAS AEROPUERTO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8f0bb19e-fe85-4d4e-b4db-6e82d8d8e048",
+        "description": "PETROBRAS ALTO HOSPIC",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a1bc32c6-570c-4023-a017-f22b8b920c05",
+        "description": "PEDIDOSYA 3D RESTAURANT",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "61b6617c-2bf8-4c0d-8ee2-a9a908c03862",
+        "description": "PEDIDOSYA 3D SUPERMERC",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "81c47f02-176d-4e5f-aa71-ae7a530bc3b2",
+        "description": "PEDIDOSYA INDUMENT RIDERS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "261957e8-93ee-4722-9613-d8947fb951ba",
+        "description": "PEDIDOSYA MARKETS 9262",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "714267f6-b2e8-4b3e-985f-16b3576fe82f",
+        "description": "PEDIDOSYA PROPINA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "cc9264b1-e149-46c4-b3fb-ebc3756b7e80",
+        "description": "McDonalds Las Condes",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "fda0062c-5892-4bbd-ba39-3aa828d083bd",
+        "description": "FACEBK 85ENTJXAQ2",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "0129392c-267e-480d-8f73-0c180d4da724",
+        "description": "FACEBK 85GSQFKH92",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "77c853fa-6e36-43d6-a651-748c9f0f3e7d",
+        "description": "FACEBK 85R97HKYG2",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "64897036-6b19-4c35-898d-2b0163f96098",
+        "description": "SumUp *DOMINOS PIZZA G",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a5df86ea-77e8-4662-b9ba-a2c9173c0c7d",
+        "description": "PAYPAL *DOMINOS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "4e741396-0957-469f-bb31-8146695a974d",
+        "description": "DOMINO S PIZZA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "70dbfd4a-785f-4b8f-9c1e-222293a2254f",
+        "description": "Domino s Pizza Frederi",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "019b974b-6df2-46ff-b8a6-fe3018504aa1",
+        "description": "DOMINO S PIZZA LA 10",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "fe479f53-26e9-4e4e-9426-4404838759e3",
+        "description": "DOMINO SANTA ROSA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "7dcbae0d-151b-44c7-9319-1c2b2321cf23",
+        "description": "DOMINO'S 2080",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "9dcde562-e339-4db6-bf38-bf43a0a9c5b6",
+        "description": "DOMINO'S 2759",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "cf4a211b-489c-488b-a99a-e967c757fb62",
+        "description": "DOMINO'S 3232",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "56da91b6-2c64-442a-b48b-4d2dc0322384",
+        "description": "DOMINO'S 3684",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "01509ee3-ae35-4609-8d70-59feac65613b",
+        "description": "DOMINO'S 4342",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "ab7282d6-ffb0-4923-bb4e-7ea0c73d9338",
+        "description": "SALCOBRAND 433 JUMBO C",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "09ce9171-8c2b-445e-a6de-3e2ca99c807a",
+        "description": "SALCOBRAND 433 JUMBO CALA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "691eee47-e813-45b6-ba5f-d740aa756e6e",
+        "description": "CRUZVERDE CV 9059",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "2d22fbdb-bf72-4726-a5ac-b7ad860ce732",
+        "description": "CRUZVERDE CV 9060",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "56cc647a-c279-4b1f-a34d-4e081b198934",
+        "description": "CRUZVERDE CV 9061",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "5ac4a1c1-92e1-4a36-97ff-f3f528ae2bce",
+        "description": "CRUZVERDE CV9081",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8911c8c0-251a-496e-9edf-14dc490b5dbf",
+        "description": "CRUZVERDE CV9087",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "ecf1df60-ccbd-4ebd-be2b-5f6dd6cb8002",
+        "description": "C. VERDE JUMBO RANCAGUA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "0a7f3e2b-e9a9-4808-abf9-a2e8c9234539",
+        "description": "C. VERDE JUMBO V DEL M",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "4057443b-e4fe-4ade-aeca-75762269b686",
+        "description": "C. VERDE JUMBO V DEL MAR",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "33e55891-f07b-4c71-a088-6ae2680cc182",
+        "description": "merpago aguasandinas",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "d59336f3-51f3-4227-96d9-e2f1c1ff356e",
+        "description": "UNIRED CL AGUAS ANDINAS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "898ebcab-a656-422d-83e0-7e95175cffd2",
+        "description": "AGUAS ANDINAS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "845382fa-20cf-48bd-9e17-9a3b1d324ddd",
+        "description": "AGUAS ANDINAS ONEPAY",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "5733abe1-793e-474c-9f3d-cc90293c1336",
+        "description": "MCB 02 AGUAS ANDINAS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "bd5b44f9-5c9d-4a5f-84f2-dede45a6fd67",
+        "description": "COMPRA NACIONAL EASY LA DEHESA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "dad095a6-afdb-4464-9e31-0b591b2ee52b",
+        "description": "Compra Nacional EASY RANCAGUA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8b0d4d05-b3ce-460d-be8d-d13557c4a241",
+        "description": "EASY ALTO LAS CONDE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8dd18e0a-b0b7-4e5f-974a-e6e83070ea1a",
+        "description": "EASY ALTO LAS CONDES",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "e4d7b198-cc24-461c-b9f4-512c3db48ed4",
+        "description": "EASY ANTOFAGASTA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "853b523b-35ee-46e4-890b-54ab345562ca",
+        "description": "EASY CALAMA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "08faf196-2a2a-46c9-9fd8-cb818adaf2b2",
+        "description": "EASY CERRILLOS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a750c767-024a-4f5d-ab4e-2945c434bb87",
+        "description": "EASY CHIGUAYANTE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a4ae22b8-ece0-41d1-9e5e-5d3ec953db4b",
+        "description": "EASY CHILLAN",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "33db0fe0-d0a2-408a-9cbc-6336b8071513",
+        "description": "EASY CONCHA Y TORO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "3e60fb9e-9dc9-4723-b9b0-327a44979708",
+        "description": "EASY CONCHA Y TORO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "55ce02a6-e9d4-4be2-ab76-8d2f5ef65e3f",
+        "description": "EXPRESS - LIDER",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "67cbc2f5-c5c0-42bb-a486-498f8b292d5f",
+        "description": "EXPRESS - LIDER CONCE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "6790b0c9-acce-4fb7-a482-588794b9732d",
+        "description": "EXPRESS - LIDER CONCE TRE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "f9c3f249-8845-4772-a92f-137f9cc6cfb5",
+        "description": "EXPRESS ALGARROBO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "6613cefb-a26d-46ea-9f97-35584acbb3a1",
+        "description": "EXPRESS ANDINO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a7994344-229d-4595-9d01-cc88d61cfe5c",
+        "description": "EXPRESS ANDRNS MELLADO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "590cbee4-86f9-4b11-84c4-597a6c7cff4c",
+        "description": "EXPRESS ANGELINO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "13fd3e6e-b388-4fa4-9dd0-7f01df7eb5d2",
+        "description": "EXPRESS ANTOFAG PEREZ",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "5e9f18a3-f03f-4105-add0-9ea53a47100a",
+        "description": "EXPRESS BUIN SAN MARTIN",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "bca111cc-489b-4e8f-93d8-b7968d16292f",
+        "description": "EXPRESS BUIN SAN MARTIN",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a0bbb1c8-06ba-4f44-8b7b-5f89d7ffcee4",
+        "description": "EXPRESS CIUD DE LOS VA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "282e7e6d-35db-480e-bdbc-bac5ffb8dbc1",
+        "description": "EXPRESS CIUD DE LOS VALLE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "be2bf39a-a7a0-4ed0-93c3-29cfb58027f2",
+        "description": "EXPRESS CIUDAD DE BARCELO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8aecdb46-e0a0-4abe-aee6-c6f5fdf5662b",
+        "description": "EXPRESS CIUDAD DEL ES",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "2136d633-09f4-404b-a23c-caeab8836584",
+        "description": "MP *RECARGA BIP]",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "6a52aef4-b799-47e9-8696-f65947be00d5",
+        "description": "MP *RECARGA BIP|",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "d73ee089-f92e-4045-a785-db372706f6ab",
+        "description": "BC UBER CASH",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "a3228c72-edf4-49bd-9fdc-4b20acd6b5ec",
+        "description": "PAYPAL *UBER",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "e39712c7-f2f7-4971-a48e-0caba37eba28",
+        "description": "PAYPAL *UBER BR",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "3e7bef79-e467-452a-9728-58da5a74993b",
+        "description": "PAYPAL *UBER BV",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "10fe9929-655a-4256-bf0f-8ccd13204a9c",
+        "description": "PAYPAL *UBER BV",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "c7dbf25d-0d98-48d2-8b9e-5716424bf615",
+        "description": "PAYPAL *UBERPAYMENT",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "db5486ea-13d8-4a77-a131-38a2d3c6d57c",
+        "description": "PAYU *UBER TR",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "78c3f703-f022-4704-bffe-e5bfcda470d3",
+        "description": "PAYU-UBER 828987",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "07ba1582-6857-4944-a63e-8643ce5c3354",
+        "description": "PAYPAL *UBER EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "441afcf9-fea2-4bc1-85c7-ca9e5fb3b812",
+        "description": "PAYPAL *UBERBV EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "ff1f557e-2aea-4b57-9088-2deeccd67e68",
+        "description": "PAYPAL *UBEREATS AU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "6b4da43a-bf51-4451-9523-4a54823f9cd3",
+        "description": "UBER *EATS HELP.UBER.C",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "85698aa1-13f0-4413-97f8-e589dac88b29",
+        "description": "UBER *EATS HELP.UBER.C",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "ec869c68-34c6-4cac-b42c-db2b895e923d",
+        "description": "UBER *EATS HELP.UBER.COM",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "fccd6f0a-9e80-4499-84d7-750c5bc2d819",
+        "description": "UBER CANADA/UBEREATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "63261ab7-9c17-4ad8-8ef5-c4ab71a9b282",
+        "description": "UBER EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "3b83827a-f512-4fd3-b5e8-bde5abbe12d1",
+        "description": "UBER EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "9b507f7d-23ef-42aa-88a8-915ce17c3b09",
+        "description": "UBER* EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "dc340482-fb14-44d1-b408-54a0ba9cbed9",
+        "description": "UBER* EATS",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "6db92a46-a85d-4458-914a-258954724c95",
+        "description": "UNDER AMOUR MALL PLAZA VE",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "774e8902-bf0b-429b-a83d-76b3e00ffe55",
+        "description": "UNDER ARMOUR",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8318ac71-771f-4c1a-b0d3-14811665b42e",
+        "description": "UNDER ARMOUR CANCUN IC",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "ca491476-4ac6-4864-8bf9-8f826718640d",
+        "description": "Pago TDC ITAU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "b8db819e-db3b-4c59-a7d0-dc0bae6dc772",
+        "description": "Pago TDC ITAU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "adb9f8c3-8b06-4136-bad6-95786fdf73fe",
+        "description": "Pago TDC ITAU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "b143f43c-3f07-4d97-9f9d-a6df7ce6c1ca",
+        "description": "Pago TDC ITAU",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "3ae9f5a7-c79d-4286-80be-99086d034e3a",
+        "description": "BOLT",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "799671fe-b5ef-4697-b156-9883099b405d",
+        "description": "UNIMARC - COORONEL",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "c923347d-76b3-462e-9edd-bbbc9f03bffd",
+        "description": "UNIMARC ANDALUE (CABRERO)",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "f8d921a7-11c4-4126-82a8-dac3065b4493",
+        "description": "UNIMARC ANGOL I",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "8cbbfef7-14f6-41dc-9037-363ae41a82a5",
+        "description": "UNIMARC ANTOFAGASTA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "92f2745a-7b5e-4d47-bb93-84720ce48c92",
+        "description": "UNIMARC ARAUCO",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "d452b248-da48-4734-8c83-d9261663aacd",
+        "description": "UNIMARC ATACAMA",
+        "amount": NaN,
+        "date": NaN
+    },
+    {
+        "id": "9b0f9739-a62d-4dc8-95d7-03a761dfdc29",
+        "description": "UNIMARC AV ESPANA",
+        "amount": NaN,
+        "date": NaN
+    }
+]

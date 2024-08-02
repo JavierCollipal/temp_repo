@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1b700aba-760e-4d69-9acb-95d59a9ca7a1",
+        "keyword": "uber",
+        "merchant_id": "424b4f71-d3b9-4865-84ec-b32052df1333"
+    },
+    {
+        "id": "f30ed59d-bd81-4739-8a8b-79f8e805b5a7",
+        "keyword": "santander",
+        "merchant_id": "41ae2274-14b5-4fea-aaad-ebac7a48e7be"
+    },
+    {
+        "id": "9e31b22a-67be-466b-a07a-4fc095d3370a",
+        "keyword": "jumbo",
+        "merchant_id": "5fbc6e21-fd4a-4eb8-97fe-0a63773c90e8"
+    },
+    {
+        "id": "7115b894-bd7d-4881-ad75-1661f3030ebc",
+        "keyword": "c verde",
+        "merchant_id": "9bdf256a-6b12-4e92-aefe-5102bd3d8f5d"
+    },
+    {
+        "id": "7e377a8b-f005-4fcb-948d-b3f8a7255f2c",
+        "keyword": "petrobras",
+        "merchant_id": "d28f1b52-d261-4773-95e1-9c46899d7812"
+    }
+]

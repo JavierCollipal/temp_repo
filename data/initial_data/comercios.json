@@ -1,0 +1,92 @@
+[
+    {
+        "id": "424b4f71-d3b9-4865-84ec-b32052df1333",
+        "merchant_name": "Uber",
+        "merchant_logo": "https://media.wired.com/photos/592736e0f3e2356fd800bcae/master/w_1600%2Cc_limit/Uber_Logobit_Digital_black.jpg",
+        "category_id": "d3a36995-2900-4bf0-b1c3-8fc186b057c6"
+    },
+    {
+        "id": "f9b21d31-c9b7-4891-a380-ede2c12cb1f9",
+        "merchant_name": "Uber Eats",
+        "merchant_logo": "https://images.ctfassets.net/2d5q1td6cyxq/4ccZIBiMInLgkRiUBxPMK3/57a01ecf4ab2067857d3a37d540df5d7/UberEatsLogo-ICON-2022-09-14.png",
+        "category_id": "0a634e46-79fb-4bd1-a0f7-0fda27076a1a"
+    },
+    {
+        "id": "6a8a8a65-c205-4d66-8c61-47887e48ee70",
+        "merchant_name": "Wallgreens",
+        "merchant_logo": "https://assets.stickpng.com/images/62fd1aa6e2f4ab90cbbc6fbb.png",
+        "category_id": "28172dd5-8046-47f2-a1c8-0a5a43fbd096"
+    },
+    {
+        "id": "41ae2274-14b5-4fea-aaad-ebac7a48e7be",
+        "merchant_name": "Santander",
+        "merchant_logo": "https://shoppingunisul.com.br/palhoca/wp-content/uploads/2019/02/santander.jpg",
+        "category_id": NaN
+    },
+    {
+        "id": "fc677b9b-60df-4ee6-9d52-d466d8f5d6e1",
+        "merchant_name": "American Airlines",
+        "merchant_logo": "https://static.dezeen.com/uploads/2013/01/dezeen_American-Airlines-logo-and-livery_3.gif",
+        "category_id": "78f58e6d-f009-4a8b-b8b9-44e172a47f01"
+    },
+    {
+        "id": "adee117a-7dd7-40ce-96dc-da3d44af61ea",
+        "merchant_name": "Falabella",
+        "merchant_logo": "https://images.falabella.com/v3/assets/blt7c5c2f2f888a7cc3/blt09274da39e1b6410/622b895af26a4b66ea4a1452/iconos-CDA-Horarios-Falabella-V1.png",
+        "category_id": "41de7519-ba52-47d1-bf29-a0009a982570"
+    },
+    {
+        "id": "b1e9e194-772e-4e15-9fa3-62259e50f805",
+        "merchant_name": "Domino's Pizza",
+        "merchant_logo": "https://cache.dominos.com/olo/6_123_4/assets/build/images/promo/dominos_social_logo.jpg",
+        "category_id": "0a634e46-79fb-4bd1-a0f7-0fda27076a1a"
+    },
+    {
+        "id": "d28f1b52-d261-4773-95e1-9c46899d7812",
+        "merchant_name": "Petrobras",
+        "merchant_logo": "https://cdn.worldvectorlogo.com/logos/petrobras-8.svg",
+        "category_id": "d3a36995-2900-4bf0-b1c3-8fc186b057c6"
+    },
+    {
+        "id": "7f85ee39-49be-454c-9527-faec2ff0fc3d",
+        "merchant_name": "Salcobrand",
+        "merchant_logo": NaN,
+        "category_id": "104016ff-0b92-4e48-8129-5af2d08e8908"
+    },
+    {
+        "id": "9bdf256a-6b12-4e92-aefe-5102bd3d8f5d",
+        "merchant_name": "Cruz Verde",
+        "merchant_logo": NaN,
+        "category_id": "104016ff-0b92-4e48-8129-5af2d08e8908"
+    },
+    {
+        "id": "d6f3b66a-4549-4067-ae6d-9bfadbc8c49a",
+        "merchant_name": "Ita\u00fa",
+        "merchant_logo": NaN,
+        "category_id": NaN
+    },
+    {
+        "id": "4db72b4f-ce8d-4dd2-aa8b-118c6a86d885",
+        "merchant_name": "bip!",
+        "merchant_logo": NaN,
+        "category_id": "d3a36995-2900-4bf0-b1c3-8fc186b057c6"
+    },
+    {
+        "id": "0252291e-6c90-4c4f-b50e-4c0e0050f99d",
+        "merchant_name": "Easy",
+        "merchant_logo": NaN,
+        "category_id": "8ed27362-9a18-4acc-ab34-c70994e8b250"
+    },
+    {
+        "id": "5fbc6e21-fd4a-4eb8-97fe-0a63773c90e8",
+        "merchant_name": "Lider",
+        "merchant_logo": NaN,
+        "category_id": "28172dd5-8046-47f2-a1c8-0a5a43fbd096"
+    },
+    {
+        "id": "cbd6a968-4c2f-4bf7-94e6-2d2db4d93f89",
+        "merchant_name": "Aguas Andinas",
+        "merchant_logo": NaN,
+        "category_id": "c939fa87-2630-4c48-93d1-56ffac263489"
+    }
+]

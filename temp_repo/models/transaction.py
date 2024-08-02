@@ -1,9 +1,7 @@
-from mongoengine import Document, UUIDField, StringField, DecimalField, DateField, DateTimeField
+from mongoengine import Document, StringField, DecimalField, DateField, DateTimeField
 from datetime import datetime
-import uuid
 
 class Transaction(Document):
-    id = UUIDField(binary=False, required=True, default=uuid.uuid4, primary_key=True)
     description = StringField(required=True, max_length=255)
     amount = DecimalField(required=True)
     date = DateField(required=True)
