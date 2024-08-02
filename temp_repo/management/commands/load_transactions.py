@@ -32,7 +32,7 @@ class Command(BaseCommand):
 
                     # Create and save the Transaction document
                     Transaction(
-                        id=UUID(transaction_data['id']),  # Convert string to UUID
+                        external_id=UUID(transaction_data['id']),  # Convert string to UUID
                         description=transaction_data['description'],
                         amount=amount,
                         date=date

@@ -13,7 +13,7 @@ class Command(BaseCommand):
                 # Convert the ID string to a UUID object
                 category_id = UUID(category['id'])
                 Category(
-                    id=category_id,  # Use UUID object for the id field
+                    external_id=category_id,  # Use UUID object for the id field
                     name=category['name'],
                     type=category['type']
                 ).save()

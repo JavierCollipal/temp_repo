@@ -19,7 +19,7 @@ class Command(BaseCommand):
                         # Convert category_id to UUID object
                         category_id = UUID(category_id)
                         # Fetch the corresponding Category document
-                        category = Category.objects(id=category_id).first()
+                        category = Category.objects(external_id=category_id).first()
                     else:
                         category = None
 
@@ -32,7 +32,7 @@ class Command(BaseCommand):
 
                     # Create and save the Commerce document
                     Commerce(
-                        id=UUID(commerce['id']),  # Convert string to UUID
+                        external_id=UUID(commerce['id']),  # Convert string to UUID
                         merchant_name=commerce['merchant_name'],
                         merchant_logo=merchant_logo,  # Only set if it's valid
                         category=category  # Can be None if not found

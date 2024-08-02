@@ -18,14 +18,14 @@ class Command(BaseCommand):
                         # Convert merchant_id to UUID object
                         merchant_id = UUID(merchant_id)
                         # Fetch the corresponding Commerce document
-                        merchant = Commerce.objects(id=merchant_id).first()
+                        merchant = Commerce.objects(external_id=merchant_id).first()
                     else:
                         merchant = None
 
                     if merchant:
                         # Create and save the Keyword document
                         Keyword(
-                            id=UUID(keyword_data['id']),  # Convert string to UUID
+                            external_id=UUID(keyword_data['id']),  # Convert string to UUID
                             keyword=keyword_data['keyword'],
                             merchant_id=merchant
                         ).save()
